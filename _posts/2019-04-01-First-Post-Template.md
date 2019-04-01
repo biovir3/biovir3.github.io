@@ -1,74 +1,53 @@
 ---
 layout: post
-title: Test markdown
-subtitle: Each post also has a subtitle
-gh-repo: daattali/beautiful-jekyll
-gh-badge: [star, fork, follow]
-tags: [test]
+title: For Loops to List Comprehensions in Python
+subtitle: Part 1
+tags: [python for list]
 comments: true
 ---
 
-You can write regular [markdown](http://markdowntutorial.com/) here and Jekyll will automatically convert it to a nice webpage.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](http://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
+## Last week I had a problem that involved for loops, I wanted to shorten the code.
 
-**Here is some bold text**
+  The problem was I had this long code, that I felt like shortening.
 
-## Here is a secondary heading
-
-Here's a useless table:
-
-| Number | Next number | Previous number |
-| :------ |:--- | :--- |
-| Five | Six | Four |
-| Ten | Eleven | Nine |
-| Seven | Eight | Six |
-| Two | Three | One |
-
-
-How about a yummy crepe?
-
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg)
-
-Here's a code chunk:
+  So I won't go through the whole issue, I will just shorten it down to a few key points.
+  
+Here is a simple for loops
 
 ~~~
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
+for x in example_list:
+  print(x)
 ~~~
 
-And here is the same code with syntax highlighting:
+This can be rewritten as
 
-```javascript
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-```
+~~~
+[print(x) for x in example_list ]
+~~~
 
-And here is the same code yet again but with line numbers:
+If you have more than one line of code in the for loop, we might want to look at putting that code into a function in order to simplify the 
+problem.
 
-{% highlight javascript linenos %}
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-{% endhighlight %}
+ex.
+~~~
+[myFunc(x) for x in example_list]
+~~~
 
-## Boxes
-You can add notification, warning and error boxes like this:
+This will execute the myFunc function for every value in the example_list.
 
-### Notification
+We can also have list comprehensions in list comprehensions.
 
-{: .box-note}
-**Note:** This is a notification box.
 
-### Warning
+But to sum up my point for this.
 
-{: .box-warning}
-**Warning:** This is a warning box.
+  - First write the for loop
+  - Second put the square brackets [] on a new line.
+  - Third put what is inside the for loop at the beginning of the list comprehension as shown above.
+  - Third write your for loop statement with out the Colon at the end, but inside the brackets..
+  - Fourth comment out your for loop and test it out.
 
-### Error
+As always things may get buggy, and if it doesn't work properly, comment out the list comprehension, and uncomment your for loop until 
+you debug the issue.
 
-{: .box-error}
-**Error:** This is an error box.
+I will be adding more on this subject later.
+
