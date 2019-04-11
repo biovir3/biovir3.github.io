@@ -1,3 +1,11 @@
+---
+layout: post
+title: Document Document Document
+
+tags: [document]
+comments: true
+---
+
 Document, Document, Document
 ============================
 
