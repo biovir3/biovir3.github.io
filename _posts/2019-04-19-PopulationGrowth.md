@@ -54,7 +54,7 @@ pd.set_option('max_rows', 500)
 pd.set_option('max_columns', 500)
 ```
 
-<p>statelist declaration</p>
+<p>statelist declaration
 
 
 ```python
@@ -416,13 +416,18 @@ geocensus2000sf1 = data.merge(census00sf1, left_on='AFFGEOID', right_on='Id', ho
 geocensus2010sf1 = data.merge(census10sf1, left_on='AFFGEOID', right_on='Id', how = 'inner')
 ```
 
-<p>Now that I have the GeoID's of both, I can change the one in the shapefile to locate as the old County, I won't go through the trouble to change the name, as it is already correct today.</p>
+Now that I have the GeoID's of both, I can change the one in the shapefile to locate as the old County, I won't go through the trouble 
+to change the name, as it is already correct today.
 
-<p>After I finished munging the data from the 2010 Census Data. I had some trouble with the largest counties in the US throwing off the visualization. These Outliers had to be dealt with by setting the min and max values to numbers that allowed me to properly show the population differences.  When I looked at my max and min values over the entire range of populations of each county, I could see that this was only a fools errand, and I would have to change my approach.</p>
+After I finished munging the data from the 2010 Census Data. I had some trouble with the largest counties in the US throwing off 
+the visualization. These Outliers had to be dealt with by setting the min and max values to numbers that allowed me to properly 
+show the population differences.  When I looked at my max and min values over the entire range of populations of each county, 
+I could see that this was only a fools errand, and I would have to change my approach.
 
-<p>This is when I discovered the vmin, and vmax plotting functions and how they set limits on the highest, and lowest values in your data.</p>
+This is when I discovered the vmin, and vmax plotting functions and how they set limits on the highest, and lowest values in your data.
 
-<p>While working on this, I decided to set values which would lock the largest counties to the top of my colormap, and allow all the other counties to be displayed with an increased contrast.</p>
+While working on this, I decided to set values which would lock the largest counties to the top of my colormap, and allow all the 
+other counties to be displayed with an increased contrast.
 
 
 ```python
@@ -459,10 +464,11 @@ geocensus2010sf1.plot(column = 'Number; SEX AND AGE - Total population', ax=ax,
 ![png](output_21_1.png)
 
 
-<p>The range was so wide across the US, that I looked at each state, and ranged the min and max according to the individual state. These graphs properly showed the population range in each state. The Max was set to 1,000,000 and the min was set to 100</p>
+The range was so wide across the US, that I looked at each state, and ranged the min and max according to the individual state. 
+These graphs properly showed the population range in each state. The Max was set to 1,000,000 and the min was set to 100
 
-<p>In order to speed things up a bit, I decided to combine my datasets into a single dataset. </p>
-<p>I am also post processing the data, as to pull out and create a column for each state, to assist with mapping individual states.</p>
+In order to speed things up a bit, I decided to combine my datasets into a single dataset. 
+I am also post processing the data, as to pull out and create a column for each state, to assist with mapping individual states.
 
 
 ```python
@@ -484,8 +490,12 @@ merged = data.merge(merged, right_on = 'Geo ID', left_on = 'AFFGEOID', how = 'in
 merged['State'] = [x[1] for x in merged['Geography'].str.split(', ')]
 ```
 
-<p>One of the biggest problems I had with this was making a generic function. I finally settled on the one above. This function takes an individual state name, and plots the data for it with the name printed in each county. And with the scale of the colormapping specifically set for that state, with the largst county set to the max value in the colorbar, and the smallest county set to the min value in the colorbar.</p>
-<p>Below I will plot California using the above function</p>
+One of the biggest problems I had with this was making a generic function. I finally settled on the one above. This function takes 
+an individual state name, and plots the data for it with the name printed in each county. And with the scale of the colormapping 
+specifically set for that state, with the largst county set to the max value in the colorbar, and the smallest county set to the min 
+value in the colorbar.
+
+Below I will plot California using the above function
 
 
 ```python
@@ -503,9 +513,9 @@ stateplotnames(merged,'California')
 ![png](output_26_1.png)
 
 
-<p>Now that the How I did this is out of the way.</p>
+Now that the How I did this is out of the way.
 
-<p>Now I needed to get the difference of the populations to show the growth of the population. </p>
+Now I needed to get the difference of the populations to show the growth of the population. 
 
 
 ```python
@@ -513,8 +523,9 @@ stateplotnames(merged,'California')
 merged['diff'] = -(merged['Population00'] - merged['Population10'])
 ```
 
-<p>Now that everything is in order, I will plot the population difference over the entire Country.</p>
-<p>To make things easier for us, we need to create another column to tell us what state each county is in.</p>
+Now that everything is in order, I will plot the population difference over the entire Country.
+
+To make things easier for us, we need to create another column to tell us what state each county is in.
 
 
 ```python
@@ -523,7 +534,7 @@ merged['diff'] = -(merged['Population00'] - merged['Population10'])
 merged['State'] = [x[1] for x in merged['Geography'].str.split(', ')]
 ```
 
-<p>Now that we have all of that out of the way, we can begin to plot each state simply and easily.</p>
+Now that we have all of that out of the way, we can begin to plot each state simply and easily.
 
 
 ```python
@@ -559,7 +570,7 @@ ndf.plot(column = colna, figsize=(30,30), ax=ax, cmap=smap, vmin = smin, vmax = 
 ![png](output_32_1.png)
 
 
-<p>Now that I had my difference in population, I could finally look at what countieshave grown the most</p>
+Now that I had my difference in population, I could finally look at what countieshave grown the most
 
 
 ```python
@@ -581,9 +592,14 @@ merged.plot(column = 'diff', ax=ax, cmap='PuOr')
 ![png](output_34_1.png)
 
 
-<p>At first glance I note a problem, I expect a lot of the country to be showing up as a much lighter shade than this. This had me thinking for a while, and then I realized that I hadn't normalized it accross the population.</p>
-<p>I also had to look at which would be greater the population gain of some counties, or the population loss of some countries. I went with the former, as a population we are growing. </p>
-<p>In order to normalize this, I would have to set the max to the max, and the negative max, to the negative min. This was easily done. Also I am going to add a colorbar to give us an idea of what is what.</p>
+At first glance I note a problem, I expect a lot of the country to be showing up as a much lighter shade than this. This had 
+me thinking for a while, and then I realized that I hadn't normalized it accross the population.
+
+I also had to look at which would be greater the population gain of some counties, or the population loss of some countries. 
+I went with the former, as a population we are growing. 
+
+In order to normalize this, I would have to set the max to the max, and the negative max, to the negative min. This was easily 
+done. Also I am going to add a colorbar to give us an idea of what is what.
 
 
 ```python
@@ -621,7 +637,8 @@ merged.plot(column = 'diff', ax=ax, cmap='PuOr', vmin = smin, vmax = smax)
 ![png](output_36_1.png)
 
 
-<p>Now that we have our differences in growth we can pull out the largest growth, and the least growth (possibly negative growth) which it looks like we have here.</p>
+Now that we have our differences in growth we can pull out the largest growth, and the least growth (possibly negative growth) 
+which it looks like we have here.
 
 
 ```python
@@ -655,22 +672,38 @@ merged.set_index('diff').sort_index(ascending = True).head(3)['Geography']
 
 
 
-<p>Before I do the plots of the states containing the largest population  growth, and loss as it turns out, I haven't had any names of the  counties on the plots. I have looked at doing it on a lower 48 states scale, and the counties  are too close together to view the names, so I will do it only  for the single state plotting. </p>
+Before I do the plots of the states containing the largest population  growth, and loss as it turns out, I haven't had any names of the  
+counties on the plots. I have looked at doing it on a lower 48 states scale, and the counties  are too close together to view the names, 
+so I will do it only  for the single state plotting.
 
-<p>Names, each graph had no names on it, I didn’t know what I was  looking at, unless I recognized the state, and then I had no idea what  the individual counties were. I titled each graph with the name of the  state. I still wasn’t happy though, I needed to put a name to each  county to clarify the data. </p>
+Names, each graph had no names on it, I didn’t know what I was  looking at, unless I recognized the state, and then I had no idea what  
+the individual counties were. I titled each graph with the name of the  state. I still wasn’t happy though, I needed to put a name to each  
+county to clarify the data. 
 
-<p>This turned out to be the  most difficult process for me, and I thought I had broken the code a few  times. I got to the point where I didn’t know how I was going to finish  and make the most of what I had. I had the county names to go with the  populations, and the differences in populations. I needed a way to place  these names on my graph to clarify what was what.  </p>
+This turned out to be the  most difficult process for me, and I thought I had broken the code a few  times. I got to the point where I 
+didn’t know how I was going to finish  and make the most of what I had. I had the county names to go with the  populations, and the 
+differences in populations. I needed a way to place  these names on my graph to clarify what was what.  
 
-<p>I found  tutorial after tutorial after tutorial, non of them worked, I didn’t  want to do something with out complete clarity. I came close to  scrapping my work, and picking different data. I was working with the  example of the fourth or fifth tutorial, when I saw a glimmer of hope. I  saw a graph with all the counties mapped onto the entire United  States. I was so happy, and thought my struggle was over, turns out I  had a long way to go.</p>
+I found  tutorial after tutorial after tutorial, non of them worked, I didn’t  want to do something with out complete clarity. I came close 
+to  scrapping my work, and picking different data. I was working with the  example of the fourth or fifth tutorial, when I saw a glimmer 
+of hope. I  saw a graph with all the counties mapped onto the entire United  States. I was so happy, and thought my struggle was over, 
+turns out I  had a long way to go.
 
-<p>The problem with the code was it took  forever to run. I left it for over an hour and nothing finished, I went  back to my thoughts of scrapping it and doing something easier. It was  late, I was getting tired, I wanted to give up.</p>
+The problem with the code was it took  forever to run. I left it for over an hour and nothing finished, I went  back to my thoughts of 
+scrapping it and doing something easier. It was  late, I was getting tired, I wanted to give up.
 
-<p>I kept at it. I  decided to break it down into the pieces that made sense to me. Then I  found the problem, the tutorial I was using had a few data points, and  used a text processing library to enhance the text further. I commented  it out, and crisis averted. Now I faced another issue. The counties  weren’t large enough to fit the text in them displaying the entire USA, I  tried resizing the font, resizing the figure size, there were still too  many to display in the given space. The only thing I had accomplished  doing was muddling up the graph of the Lower 48 states.</p>
+I kept at it. I  decided to break it down into the pieces that made sense to me. Then I  found the problem, the tutorial I was using 
+had a few data points, and  used a text processing library to enhance the text further. I commented  it out, and crisis averted. Now 
+I faced another issue. The counties  weren’t large enough to fit the text in them displaying the entire USA, I  tried resizing the font, 
+resizing the figure size, there were still too  many to display in the given space. The only thing I had accomplished  doing was muddling 
+up the graph of the Lower 48 states.
 
-<p>I wasn’t  dishearted though, There wasn’t enough room on the graph to  display the county names on the entire map.  I changed some  things around and added more functions, These new functions took  labeling to the individual state levels, and things looked Beautiful.</p>
+I wasn’t  dishearted though, There wasn’t enough room on the graph to  display the county names on the entire map.  I changed some  
+things around and added more functions, These new functions took  labeling to the individual state levels, and things looked Beautiful.
 
-<p>I will go through the process of plotting a state map, and have the names on it.</p>
-<p>** Also note the functions are designed to work with the merged dataframe**</p>
+I will go through the process of plotting a state map, and have the names on it.
+
+** Also note the functions are designed to work with the merged dataframe**
 
 
 ```python
@@ -727,8 +760,8 @@ for x, y, label in zip(data_points.geometry.x,
 ![png](output_42_1.png)
 
 
-<p>Now that we have things working, we can look at the states that we found having the population gain or loss.</p>
-<p> Below I am plotting the states using the function stateplotnamesdiff. The function it was derived from is noted below, and all functions are declared at the top of this Jupyter Notebook. </p>
+Now that we have things working, we can look at the states that we found having the population gain or loss.
+
 
 
 ```python
@@ -778,8 +811,9 @@ stateplotnamesdiff(merged,'California', colna = 'diff', smap = 'PuOr')
 ![png](output_46_1.png)
 
 
-<p>Now we can see the Counties with the largest growth plotted according to their individual state.</p>
-<p>The states with the largest losses are shown below.</p>
+Now we can see the Counties with the largest growth plotted according to their individual state.
+
+The states with the largest losses are shown below.
 
 
 ```python
@@ -829,4 +863,4 @@ stateplotnamesdiff(merged,'Louisiana', colna = 'diff', smap = 'PuOr')
 ![png](output_50_1.png)
 
 
-<p>I hope you have enjoyed my display of population growth between the 2000 Census, and the 2010 Census.</p>
+I hope you have enjoyed my display of population growth between the 2000 Census, and the 2010 Census.
