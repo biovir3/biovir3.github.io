@@ -59,7 +59,7 @@ statelist declaration
 
 
 ```python
-statelist = ['Alabama',
+ statelist = ['Alabama',
  'Alaska',
  'Arizona',
  'Arkansas',
@@ -276,7 +276,7 @@ geocensus2000sf1.plot(column = 'Number; Total population', ax=ax, cmap='plasma',
                       vmin = 100, vmax = 900000)
 ```
 
-![png](./_posts/output_12_1.png)
+![png](/_posts/output_12_1.png)
 
 
 
@@ -289,7 +289,7 @@ geocensus2010sf1.plot(column = 'Number; SEX AND AGE - Total population', ax=ax, 
                       vmin = 100, vmax = 900000)
 ```
 
-![png](./_posts/output_13_1.png)
+![png](/_posts/output_13_1.png)
 
 
 The first problem I discovered is there is a missing county in my data. it shows up as the white spot.
@@ -429,7 +429,7 @@ geocensus2000sf1.plot(column = 'Number; Total population', ax=ax,
 ```
 
 
-![png](./_posts/output_20_0.png)
+![png](/_posts/output_20_0.png)
 
 
 
@@ -442,7 +442,7 @@ geocensus2010sf1.plot(column = 'Number; SEX AND AGE - Total population', ax=ax,
                       cmap='plasma', vmin = 100, vmax = 1000000)
 ```
 
-![png](./_posts/output_21_1.png)
+![png](/_posts/output_21_1.png)
 
 
 The range was so wide across the US, that I looked at each state, and ranged the min and max according to the individual state. 
@@ -483,7 +483,7 @@ Below I will plot California using the above function
 stateplotnames(merged,'California')
 ```
 
-![png](./_posts/output_26_1.png)
+![png](/_posts/output_26_1.png)
 
 
 Now that the How I did this is out of the way.
@@ -532,7 +532,7 @@ if (smin == 0) and (smax == 0):
 ndf.plot(column = colna, figsize=(30,30), ax=ax, cmap=smap, vmin = smin, vmax = smax)
 ```
 
-![png](output_32_1.png)
+![png](/_posts/output_32_1.png)
 
 
 Now that I had my difference in population, I could finally look at what countieshave grown the most
@@ -546,7 +546,7 @@ ax.set_ylim([23,50])
 merged.plot(column = 'diff', ax=ax, cmap='PuOr')
 ```
 
-[png](output_34_1.png)
+[png](/_posts/output_34_1.png)
 
 
 At first glance I note a problem, I expect a lot of the country to be showing up as a much lighter shade than this. This had 
@@ -583,7 +583,7 @@ cbar = fig.colorbar(sm, fraction=.011)
 merged.plot(column = 'diff', ax=ax, cmap='PuOr', vmin = smin, vmax = smax)
 ```
 
-![png](output_36_1.png)
+![png](/_posts/output_36_1.png)
 
 
 Now that we have our differences in growth we can pull out the largest growth, and the least growth (possibly negative growth) 
@@ -698,7 +698,7 @@ for x, y, label in zip(data_points.geometry.x,
     texts.append(plt.text(x, y, label, fontsize = 12))
 ```
 
-![png](output_42_1.png)
+![png](/_posts/output_42_1.png)
 
 
 Now that we have things working, we can look at the states that we found having the population gain or loss.
@@ -709,7 +709,7 @@ Now that we have things working, we can look at the states that we found having 
 stateplotnamesdiff(merged,'Arizona', colna = 'diff', smap = 'PuOr')
 ```
 
-![png](output_44_1.png)
+![png](/_posts/output_44_1.png)
 
 
 
@@ -717,7 +717,7 @@ stateplotnamesdiff(merged,'Arizona', colna = 'diff', smap = 'PuOr')
 stateplotnamesdiff(merged,'Texas', colna = 'diff', smap = 'PuOr')
 ```
 
-![png](output_45_1.png)
+![png](/_posts/output_45_1.png)
 
 
 
@@ -725,7 +725,7 @@ stateplotnamesdiff(merged,'Texas', colna = 'diff', smap = 'PuOr')
 stateplotnamesdiff(merged,'California', colna = 'diff', smap = 'PuOr')
 ```
 
-![png](output_46_1.png)
+![png](/_posts/output_46_1.png)
 
 
 Now we can see the Counties with the largest growth plotted according to their individual state.
@@ -737,7 +737,7 @@ The states with the largest losses are shown below.
 stateplotnamesdiff(merged,'Michigan', colna = 'diff', smap = 'PuOr')
 ```
 
-![png](./_posts/output_48_1.png)
+![png](/_posts/output_48_1.png)
 
 
 
@@ -745,7 +745,7 @@ stateplotnamesdiff(merged,'Michigan', colna = 'diff', smap = 'PuOr')
 stateplotnamesdiff(merged,'Illinois', colna = 'diff', smap = 'PuOr')
 ```
 
-![png](./_posts/output_49_1.png)
+![png](/_posts/output_49_1.png)
 
 
 
@@ -753,7 +753,7 @@ stateplotnamesdiff(merged,'Illinois', colna = 'diff', smap = 'PuOr')
 stateplotnamesdiff(merged,'Louisiana', colna = 'diff', smap = 'PuOr')
 ```
 
-![png](./_posts/output_50_1.png)
+![png](/_posts/output_50_1.png)
 
 
 I hope you have enjoyed my display of population growth between the 2000 Census, and the 2010 Census.
