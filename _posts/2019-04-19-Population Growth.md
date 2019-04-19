@@ -288,12 +288,16 @@ geocensus2010sf1.plot(column = 'Number; SEX AND AGE - Total population', ax=ax, 
                       vmin = 100, vmax = 900000)
 ```
 
-![png](output_13_1.png)
+![png](./_posts/output_13_1.png)
 
 
 The first problem I discovered is there is a missing county in my data. it shows up as the white spot.
-I created the view counties by state function to discover what state had the missing county, and correct for it.  I won't go through all of the states to show you which one it was. South Dakota turned out to be the culprit, and I looked at a map of that state to determine what the county was.</p>
-Shannon County changed it's name to Oglala Lakota County in 2017, and with the name change their GeoID tag changed. I discovered the GeoID tags of both Shannon, and Oglala Lakota, and in the shapefile, I change the tag for Oglala Lakota back to Shannon County.</p>
+I created the view counties by state function to discover what state had the missing county, and correct for it.  
+I won't go through all of the states to show you which one it was. South Dakota turned out to be the culprit, and 
+I looked at a map of that state to determine what the county was.
+Shannon County changed it's name to Oglala Lakota County in 2017, and with the name change their GeoID tag changed. 
+I discovered the GeoID tags of both Shannon, and Oglala Lakota, and in the shapefile, I change the tag for Oglala Lakota 
+back to Shannon County.
 
 
 ```python
@@ -400,8 +404,8 @@ geocensus2000sf1 = data.merge(census00sf1, left_on='AFFGEOID', right_on='Id', ho
 geocensus2010sf1 = data.merge(census10sf1, left_on='AFFGEOID', right_on='Id', how = 'inner')
 ```
 
-Now that I have the GeoID's of both, I can change the one in the shapefile to locate as the old County, I won't go through the trouble 
-to change the name, as it is already correct today.
+Now that I have the GeoID's of both, I can change the one in the shapefile to locate as the old County, I won't go 
+through the trouble to change the name, as it is already correct today.
 
 After I finished munging the data from the 2010 Census Data. I had some trouble with the largest counties in the US throwing off 
 the visualization. These Outliers had to be dealt with by setting the min and max values to numbers that allowed me to properly 
@@ -424,7 +428,7 @@ geocensus2000sf1.plot(column = 'Number; Total population', ax=ax,
 ```
 
 
-![png](output_20_0.png)
+![png](./_posts/output_20_0.png)
 
 
 
@@ -437,7 +441,7 @@ geocensus2010sf1.plot(column = 'Number; SEX AND AGE - Total population', ax=ax,
                       cmap='plasma', vmin = 100, vmax = 1000000)
 ```
 
-![png](output_21_1.png)
+![png](./_posts/output_21_1.png)
 
 
 The range was so wide across the US, that I looked at each state, and ranged the min and max according to the individual state. 
@@ -478,7 +482,7 @@ Below I will plot California using the above function
 stateplotnames(merged,'California')
 ```
 
-![png](output_26_1.png)
+![png](./_posts/output_26_1.png)
 
 
 Now that the How I did this is out of the way.
@@ -732,7 +736,7 @@ The states with the largest losses are shown below.
 stateplotnamesdiff(merged,'Michigan', colna = 'diff', smap = 'PuOr')
 ```
 
-![png](output_48_1.png)
+![png](./_posts/output_48_1.png)
 
 
 
@@ -740,7 +744,7 @@ stateplotnamesdiff(merged,'Michigan', colna = 'diff', smap = 'PuOr')
 stateplotnamesdiff(merged,'Illinois', colna = 'diff', smap = 'PuOr')
 ```
 
-![png](output_49_1.png)
+![png](./_posts/output_49_1.png)
 
 
 
@@ -748,7 +752,7 @@ stateplotnamesdiff(merged,'Illinois', colna = 'diff', smap = 'PuOr')
 stateplotnamesdiff(merged,'Louisiana', colna = 'diff', smap = 'PuOr')
 ```
 
-![png](output_50_1.png)
+![png](./_posts/output_50_1.png)
 
 
 I hope you have enjoyed my display of population growth between the 2000 Census, and the 2010 Census.
