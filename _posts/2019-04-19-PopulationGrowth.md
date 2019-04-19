@@ -1,7 +1,9 @@
 
-<center><H1>Areas of Population Growth<H1/></center>
+#Areas of Population Growth
+As  I was working with the Census Data, I wanted to know about the  individual counties that grew the largest from the 2000 Census, 
+to the  2010 Census. Looking at the raw data, this turned out to give me some  rather large bumps along the way. I did a lot of 
+polishing, and roughing  it through the data to turn out what I have today.
 
-<p>As  I was working with the Census Data, I wanted to know about the  individual counties that grew the largest from the 2000 Census, to the  2010 Census. Looking at the raw data, this turned out to give me some  rather large bumps along the way. I did a lot of polishing, and roughing  it through the data to turn out what I have today.</p>
 
 <p>I  thought I would be able to show a few graphs and that would be enough, I  learned that I wasn’t going to be able to show so few graphs.  The image sizes would have to be quite large and show too much  information to display in single static images.  I learned that  the best way to do this would be images by individual states.  It is  also important to note that the range of values displayed in each state  plot,  redefined for the individual State.</p>
 
