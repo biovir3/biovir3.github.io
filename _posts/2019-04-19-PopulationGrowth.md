@@ -1,3 +1,9 @@
+---
+layout: post
+title: Areas of Population Growth
+tags: [document]
+comments: true
+---
 
 <center><H1>Areas of Population Growth<H1/></center>
 
