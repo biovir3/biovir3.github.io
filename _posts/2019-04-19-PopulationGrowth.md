@@ -288,14 +288,6 @@ geocensus2010sf1.plot(column = 'Number; SEX AND AGE - Total population', ax=ax, 
                       vmin = 100, vmax = 900000)
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f7bd77c93c8>
-
-
-
-
 ![png](output_13_1.png)
 
 
@@ -445,14 +437,6 @@ geocensus2010sf1.plot(column = 'Number; SEX AND AGE - Total population', ax=ax,
                       cmap='plasma', vmin = 100, vmax = 1000000)
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f7bd7745630>
-
-
-
-
 ![png](output_21_1.png)
 
 
@@ -493,14 +477,6 @@ Below I will plot California using the above function
 ```python
 stateplotnames(merged,'California')
 ```
-
-    /home/jmurphy/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:40: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame.
-    Try using .loc[row_indexer,col_indexer] = value instead
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-
-
 
 ![png](output_26_1.png)
 
@@ -551,14 +527,6 @@ if (smin == 0) and (smax == 0):
 ndf.plot(column = colna, figsize=(30,30), ax=ax, cmap=smap, vmin = smin, vmax = smax)
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f7bd76546d8>
-
-
-
-
 ![png](output_32_1.png)
 
 
@@ -573,15 +541,7 @@ ax.set_ylim([23,50])
 merged.plot(column = 'diff', ax=ax, cmap='PuOr')
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f7bd7763518>
-
-
-
-
-![png](output_34_1.png)
+[png](output_34_1.png)
 
 
 At first glance I note a problem, I expect a lot of the country to be showing up as a much lighter shade than this. This had 
@@ -617,14 +577,6 @@ cbar = fig.colorbar(sm, fraction=.011)
 # Purple, and negative population growth be Orange.
 merged.plot(column = 'diff', ax=ax, cmap='PuOr', vmin = smin, vmax = smax)
 ```
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f7bd74513c8>
-
-
-
 
 ![png](output_36_1.png)
 
@@ -741,14 +693,6 @@ for x, y, label in zip(data_points.geometry.x,
     texts.append(plt.text(x, y, label, fontsize = 12))
 ```
 
-    /home/jmurphy/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:17: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame.
-    Try using .loc[row_indexer,col_indexer] = value instead
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-
-
-
 ![png](output_42_1.png)
 
 
@@ -760,14 +704,6 @@ Now that we have things working, we can look at the states that we found having 
 stateplotnamesdiff(merged,'Arizona', colna = 'diff', smap = 'PuOr')
 ```
 
-    /home/jmurphy/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:40: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame.
-    Try using .loc[row_indexer,col_indexer] = value instead
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-
-
-
 ![png](output_44_1.png)
 
 
@@ -776,14 +712,6 @@ stateplotnamesdiff(merged,'Arizona', colna = 'diff', smap = 'PuOr')
 stateplotnamesdiff(merged,'Texas', colna = 'diff', smap = 'PuOr')
 ```
 
-    /home/jmurphy/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:40: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame.
-    Try using .loc[row_indexer,col_indexer] = value instead
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-
-
-
 ![png](output_45_1.png)
 
 
@@ -791,14 +719,6 @@ stateplotnamesdiff(merged,'Texas', colna = 'diff', smap = 'PuOr')
 ```python
 stateplotnamesdiff(merged,'California', colna = 'diff', smap = 'PuOr')
 ```
-
-    /home/jmurphy/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:40: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame.
-    Try using .loc[row_indexer,col_indexer] = value instead
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-
-
 
 ![png](output_46_1.png)
 
@@ -812,14 +732,6 @@ The states with the largest losses are shown below.
 stateplotnamesdiff(merged,'Michigan', colna = 'diff', smap = 'PuOr')
 ```
 
-    /home/jmurphy/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:40: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame.
-    Try using .loc[row_indexer,col_indexer] = value instead
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-
-
-
 ![png](output_48_1.png)
 
 
@@ -828,14 +740,6 @@ stateplotnamesdiff(merged,'Michigan', colna = 'diff', smap = 'PuOr')
 stateplotnamesdiff(merged,'Illinois', colna = 'diff', smap = 'PuOr')
 ```
 
-    /home/jmurphy/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:40: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame.
-    Try using .loc[row_indexer,col_indexer] = value instead
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-
-
-
 ![png](output_49_1.png)
 
 
@@ -843,14 +747,6 @@ stateplotnamesdiff(merged,'Illinois', colna = 'diff', smap = 'PuOr')
 ```python
 stateplotnamesdiff(merged,'Louisiana', colna = 'diff', smap = 'PuOr')
 ```
-
-    /home/jmurphy/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:40: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame.
-    Try using .loc[row_indexer,col_indexer] = value instead
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-
-
 
 ![png](output_50_1.png)
 
