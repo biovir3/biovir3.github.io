@@ -1,19 +1,40 @@
+---
+layout: post
+title: Areas of Population Growth
 
-#Areas of Population Growth
+tags: [census]
+comments: true
+---
+Areas of Population Growth
+=======================
+
 As  I was working with the Census Data, I wanted to know about the  individual counties that grew the largest from the 2000 Census, 
 to the  2010 Census. Looking at the raw data, this turned out to give me some  rather large bumps along the way. I did a lot of 
 polishing, and roughing  it through the data to turn out what I have today.
 
 
-<p>I  thought I would be able to show a few graphs and that would be enough, I  learned that I wasn’t going to be able to show so few graphs.  The image sizes would have to be quite large and show too much  information to display in single static images.  I learned that  the best way to do this would be images by individual states.  It is  also important to note that the range of values displayed in each state  plot,  redefined for the individual State.</p>
+I  thought I would be able to show a few graphs and that would be enough, I  learned that I wasn’t going to be able to show so few 
+graphs.  The image sizes would have to be quite large and show too much  information to display in single static images.  I learned 
+that  the best way to do this would be images by individual states.  It is  also important to note that the range of values displayed 
+in each state  plot,  redefined for the individual State.
 
-<p>I had already done maps of the entire 50 states by County, according  to the population of the 2000, and 2010 Census. My base for this had  already been set, and I had a solid footing working in this data. I  would like to expand this to include the 1990 Census, but that poses  some other issues, that I only began to scratch the surface of.</p>
+I had already done maps of the entire 50 states by County, according  to the population of the 2000, and 2010 Census. My base 
+for this had  already been set, and I had a solid footing working in this data. I  would like to expand this to include the 1990 Census, 
+but that poses  some other issues, that I only began to scratch the surface of.
 
-<p>I  will start at the beginning to show how I got started with this data. I  am currently enrolled in Lambda School, and one week our goal was to  produce graphs. I wanted to challenge myself, and deal with a dataset  that contained a large amount of data. I ended up working with Census  data on a County level, and visualizing it with a coloropleth map.</p>
+I  will start at the beginning to show how I got started with this data. I  am currently enrolled in Lambda School, and one week
+our goal was to  produce graphs. I wanted to challenge myself, and deal with a dataset  that contained a large amount of data. 
+I ended up working with Census  data on a County level, and visualizing it with a coloropleth map.
 
-<p>The  first graph I did turned out quite well.  The Census data came from the Census FactFinder website  (<a href = 'https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml'> factfinder.census.gov </a>).  When I changed the data over to the 2010 Census, I vkly saw I  had a big problem. Turns out The 2010 Census Data, had to be cleaned.  When looking at the data, I noticed that each population variable was a  string, not an integer value. I investigated further, and found some of  the values had parantheses in them. I wrote a little function to clean  these values up, and even though I had never used the apply function in a  pandas dataframe before, it worked for me without a hitch. (Just  beginners Luck) The Function code and my process is below.</p>
+The  first graph I did turned out quite well.  The Census data came from the Census FactFinder website 
+ ('https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml').  
+ When I changed the data over to the 2010 Census, I vkly saw I  had a big problem. Turns out The 2010 Census Data, 
+ had to be cleaned.  When looking at the data, I noticed that each population variable was a  string, not an integer value. 
+ I investigated further, and found some of  the values had parantheses in them. I wrote a little function to clean  these 
+ values up, and even though I had never used the apply function in a  pandas dataframe before, it worked for me without 
+ a hitch. (Just  beginners Luck) The Function code and my process is below.
 
-<p>The first thing we do, is get all of our imports, function definitions, data declarations and other beginning stuff taken care of.
+The first thing we do, is get all of our imports, function definitions, data declarations and other beginning stuff taken care of.
 this is all located here, instead of seperate files, because while it is quite modular, it is all quite essential to this specific project.</p>
 
 
@@ -88,7 +109,7 @@ statelist = ['Alabama',
  'Wyoming']
 ```
 
-<p>Code for the stateplotnames function</p>
+Code for the stateplotnames function
 
 
 ```python
@@ -156,7 +177,7 @@ def stateplotnames(df, st, smin = 0, smax = 0, smap = 'plasma', colna = 'Populat
         
 ```
 
-<p>Code for the stateplotnamesdiff function</p>
+Code for the stateplotnamesdiff function
 
 
 ```python
@@ -243,8 +264,6 @@ geocensus2010sf1 = data.merge(census10sf1, left_on='AFFGEOID', right_on='Id', ho
 
 ```
 
-All processing steps will take place in the document itself, and these blocks will be hidden by default but available to view.
-
 
 ```python
 fig, ax = plt.subplots(figsize = (30,30))
@@ -287,9 +306,9 @@ geocensus2010sf1.plot(column = 'Number; SEX AND AGE - Total population', ax=ax, 
 ![png](output_13_1.png)
 
 
-<p>The first problem I discovered is there is a missing county in my data. it shows up as the white spot.</p>
-<p>I created the view counties by state function to discover what state had the missing county, and correct for it.  I won't go through all of the states to show you which one it was. South Dakota turned out to be the culprit, and I looked at a map of that state to determine what the county was.</p>
-<p>Shannon County changed it's name to Oglala Lakota County in 2017, and with the name change their GeoID tag changed. I discovered the GeoID tags of both Shannon, and Oglala Lakota, and in the shapefile, I change the tag for Oglala Lakota back to Shannon County.</p>
+The first problem I discovered is there is a missing county in my data. it shows up as the white spot.
+I created the view counties by state function to discover what state had the missing county, and correct for it.  I won't go through all of the states to show you which one it was. South Dakota turned out to be the culprit, and I looked at a map of that state to determine what the county was.</p>
+Shannon County changed it's name to Oglala Lakota County in 2017, and with the name change their GeoID tag changed. I discovered the GeoID tags of both Shannon, and Oglala Lakota, and in the shapefile, I change the tag for Oglala Lakota back to Shannon County.</p>
 
 
 ```python
