@@ -57,6 +57,7 @@ pd.set_option('max_columns', 500)
 statelist declaration
 
 
+
 ```python
 statelist = ['Alabama',
  'Alaska',
