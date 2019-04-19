@@ -275,14 +275,6 @@ geocensus2000sf1.plot(column = 'Number; Total population', ax=ax, cmap='plasma',
                       vmin = 100, vmax = 900000)
 ```
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f7bd83c3b38>
-
-
-
-
 ![png](output_12_1.png)
 
 
