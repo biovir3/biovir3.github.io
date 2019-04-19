@@ -54,7 +54,7 @@ pd.set_option('max_rows', 500)
 pd.set_option('max_columns', 500)
 ```
 
-<p>statelist declaration
+statelist declaration
 
 
 ```python
@@ -275,7 +275,7 @@ geocensus2000sf1.plot(column = 'Number; Total population', ax=ax, cmap='plasma',
                       vmin = 100, vmax = 900000)
 ```
 
-![png](output_12_1.png)
+![png](./_posts/output_12_1.png)
 
 
 
