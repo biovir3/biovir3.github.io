@@ -12,7 +12,7 @@ Python, Pandas, SciKit Learn, Amazon AWS, Machine Learning, Flask, SQL, Git and 
 Feature Engineering, Numpy 
 
 Any Questions, feel free to ask.
-biovir3@gmail.com
+[Email: biovir3@gmail.com](mailto:biovir3@gmail.com)
 
 ### my history
 
