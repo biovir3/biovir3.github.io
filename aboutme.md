@@ -5,9 +5,11 @@ subtitle: A Short Introduction to Jason
 ---
 
 ## Jason Murphy
-    A few interesting things about me
-    - I love puzzles
-    - I am presently an aspiring Data Scientist 
+Experienced Team Lead with a demonstrated history of working in the e-learning industry. Skilled in Analytical Skills, Databases, Data Science, Data Visualization, and Java. Current Student at Lambda School.
+
+Technical Skills
+Python, Pandas, SciKit Learn, Amazon AWS, Machine Learning, Flask, SQL, Git and GitHub, PyCharm, VSCode, GitKraken, Data Visualization, PowerShell, Linux(Fedora), Docker,
+Feature Engineering, Numpy 
 
 Any Questions, feel free to ask.
 
