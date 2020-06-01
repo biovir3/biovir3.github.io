@@ -6,9 +6,6 @@ tags: [document]
 comments: true
 ---
 
-Document, Document, Document
-============================
-
 The inspiration goes back to an old saying that I have heard a lot about documenting your code.
 Always code as if the person who ends up maintaining your code is a violent psychopath who knows where you live.
 
